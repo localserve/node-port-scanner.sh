@@ -1,22 +1,23 @@
 {
-  "name": "@localserve/template",
+  "name": "@localserve/node-port-scanner.sh",
   "version": "1.0.0",
-  "description": "",
+  "description": "A painfully slow scanner; even after cluster; but hey it's in node.js.",
   "main": "src/package.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/localserve/template.git"
+    "url": "git+https://github.com/localserve/node-port-scanner.sh.git"
   },
   "keywords": [
-    "localserve",
-    "cpu-info-service"
+    "port-scanner",
+    "nmap",
+    "nmap competitor (lol)"
   ],
   "author": "Anubhav <iamanubhavsaini@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/localserve/template/issues"
+    "url": "https://github.com/localserve//node-port-scanner.sh/issues"
   },
-  "homepage": "https://github.com/localserve/template#readme",
+  "homepage": "https://github.com/localserve//node-port-scanner.sh#readme",
   "devDependencies": {
     "@types/jasmine": "^3.6.7",
     "@types/node": "^14.14.35",
@@ -27,7 +28,10 @@
     "@f0c1s/color-bgyellow": "^0.0.1"
   },
   "scripts": {
-    "test": "node_modules/.bin/jasmine",
-    "build": "node_modules/.bin/tsc --project tsconfig.json"
+    "build": "node_modules/.bin/tsc --project tsconfig.json",
+    "quickcheck": "npm run build && npm link && chmod +x `whereis slow_port_scan | awk -F': ' '{print $2}'` && slow_port_scan"
+  },
+  "bin": {
+    "slow_port_scan": "src/package.js"
   }
 }
